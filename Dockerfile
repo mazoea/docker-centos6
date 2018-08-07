@@ -1,4 +1,4 @@
-FROM centos:6.6
+FROM centos:6.10
 
 MAINTAINER jm
 
@@ -13,16 +13,16 @@ RUN yum update -q -y && \
     yum install -y bzip2-devel openssl-devel freetype-devel sqlite-devel readline-devel && \
     yum install -y python-openssl  || true && \
     yum install -y 'libffi-devel*' || true && \
-    yum install -y devtoolset-3-gcc devtoolset-3-gcc-c++
+    yum install -y devtoolset-7-gcc devtoolset-7-gcc-c++
 
-ENV CC=/opt/rh/devtoolset-3/root/usr/bin/gcc  
-ENV CPP=/opt/rh/devtoolset-3/root/usr/bin/cpp
-ENV CXX=/opt/rh/devtoolset-3/root/usr/bin/g++
+ENV CC=/opt/rh/devtoolset-7/root/usr/bin/gcc  
+ENV CPP=/opt/rh/devtoolset-7/root/usr/bin/cpp
+ENV CXX=/opt/rh/devtoolset-7/root/usr/bin/g++
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash - && \
     yum install -y nodejs
 
-RUN VER=3.7.2 PACKAGE=cmake ; git clone https://gitlab.kitware.com/cmake/$PACKAGE.git && \
+RUN VER=3.12.0 PACKAGE=cmake ; git clone https://gitlab.kitware.com/cmake/$PACKAGE.git && \
     cd $PACKAGE && git checkout v$VER && \
     ./bootstrap --prefix=/usr && \
     make  && \
