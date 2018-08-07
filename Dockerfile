@@ -19,6 +19,8 @@ ENV CC=/opt/rh/devtoolset-7/root/usr/bin/gcc
 ENV CPP=/opt/rh/devtoolset-7/root/usr/bin/cpp
 ENV CXX=/opt/rh/devtoolset-7/root/usr/bin/g++
 
+RUN /usr/bin/scl enable devtoolset-7 true
+
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash - && \
     yum install -y nodejs
 
