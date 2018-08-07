@@ -19,6 +19,7 @@ ENV CC=/opt/rh/devtoolset-7/root/usr/bin/gcc
 ENV CPP=/opt/rh/devtoolset-7/root/usr/bin/cpp
 ENV CXX=/opt/rh/devtoolset-7/root/usr/bin/g++
 
+RUN echo "source scl_source enable devtoolset-7" >> /etc/bashrc
 RUN /usr/bin/scl enable devtoolset-7 true
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash - && \
